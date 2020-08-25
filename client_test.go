@@ -25,7 +25,7 @@ func TestClient_MakeRequest(t *testing.T) {
 	// declare an empty interface
 	var result map[string]interface{}
 
-	client.MakeRequest(ctx, http.MethodGet, "/some/path", nil, &result)
+	client.MakeRequest(ctx, http.MethodGet, "/some/path", nil, nil, &result)
 
 	assert.Equal(t, "ok", result["status"])
 }

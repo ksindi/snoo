@@ -3,14 +3,14 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/ksindi/snoo?style=for-the-badge)
 
 An API client to the [SNOO Smart Sleeper Bassinet](https://www.happiestbaby.com/products/snoo-smart-bassinet).
-The SNOO is a bassinet that will rock your baby to sleep, and responds to the
+The SNOO is a bassinet that will rock your baby to sleep. It responds to
 baby by trying to sooth it with different rocking motions and sounds when it
 detects crying.
 
-Currently, it supports getting the current session data from SNOO, and historic
-data. It does not allow you to control the SNOO (the control API is provided by
-[PubNub](https://www.pubnub.com) and is different from the read-only data API
-hosted by happiestbaby.com)
+The client only supports getting the session and daily aggregated data
+from the SNOO. It does not allow you to control the SNOO
+(the control API is provided by [PubNub](https://www.pubnub.com) and is
+different from the read-only data API hosted by happiestbaby.com)
 
 # Disclaimer
 
@@ -20,7 +20,7 @@ Use at your own risk.
 
 ## Install
 
-You can also just grab the latest version with `curl`. For Linux:
+You can grab the latest version with `curl`. For Linux:
 
 ```sh
 sudo curl -o /usr/local/bin/snoo https://github.com/ksindi/snoo/releases/download/v0.1.0/snoo-linux
@@ -83,10 +83,27 @@ $ snoo days --start DATE --end DATE
 
 ```csv
 date,naps,longest_sleep,total_sleep,day_sleep,night_sleep,night_wakings,timezone
-2019-12-03,6,12933,58035,25038,32997,4,None
+2020-08-01 00:00:00 +0000 UTC,4,12997,55829,33950,21879,3,
 ```
 
-Again, all durations are given in seconds. How `day_sleep` and `night_sleep` are defined is set in your Snoo app.
+All durations are given in seconds. How `day_sleep` and `night_sleep`
+are defined is set in your Snoo app.
+
+### Export sessions
+
+To export sessions, use
+
+```sh
+$ snoo sessions --start DATE --end DATE
+```
+
+```csv
+session_id,start_time,end_time,duration,asleep_duration,soothing_duration
+1572833733,2020-08-01 00:00:00,2020-08-01 02:55:40,10541,9682,85
+```
+
+Again, all durations are given in seconds. How `asleep_duration` and `soothing_duration`
+are defined is set in your Snoo app.
 
 ## Programmatic usage
 
@@ -112,11 +129,11 @@ func main() {
   err := client.MakeRequest(ctx, http.MethodGet, "/ss/v2/sessions/last", nil, nil, &result)
 
   if err != nil {
-  	log.Fatal(err)
+  	log.Fatalln(err)
   }
 }
 ```
 
 ## Credit
 
-This repo was inspired by https://github.com/maebert/snoo.
+This repo is inspired by https://github.com/maebert/snoo.

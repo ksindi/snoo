@@ -88,7 +88,7 @@ type tokenSession struct {
 	RefreshToken string `json:"refresh_token"`
 }
 
-// Client represents the JWPlatform client object.
+// Client represents the SNOO client object.
 type Client struct {
 	BaseURL   *url.URL
 	UserAgent string

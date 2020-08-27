@@ -87,7 +87,9 @@ $ snoo sessions --start DATE --end DATE
 
 ```csv
 session_id,start_time,end_time,duration,asleep_duration,soothing_duration
-1572833733,2020-08-01 00:00:00,2020-08-01 02:55:40,10541,9682,85
+1425693702,2020-08-22 00:00:00,2020-08-22 03:09:10,11350,11350,0
+1609190237,2020-08-22 03:35:16,2020-08-22 08:20:54,17138,17138,0
+1919690037,2020-08-22 10:12:26,2020-08-22 11:31:37,4751,3357,1394
 ```
 
 Again, all durations are given in seconds. How `asleep_duration` and `soothing_duration`

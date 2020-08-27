@@ -1,7 +1,7 @@
 /*
-A CLI to get information from SNOO.
+A CLI to get information from the SNOO Smart Sleeper Bassinet.
 
-		$ snoo status
+		$ snoo sessions --start 2020-08-24 --end 2020-08-24
 
 */
 package main
@@ -41,18 +41,6 @@ func Sessions(c *cli.Context) error {
 	return nil
 }
 
-func Status(c *cli.Context) error {
-	username := c.String("username")
-	password := c.String("password")
-
-	client := NewClient(username, password)
-	result := client.GetStatus()
-
-	log.Info(result)
-
-	return nil
-}
-
 // runCli will run the command-line program, see
 // https://github.com/urfave/cli
 func runCli() error {
@@ -75,12 +63,6 @@ func runCli() error {
 
 	app.Usage = "An API client to the SNOO Smart Sleeper Bassinet"
 	app.Commands = []*cli.Command{
-		{
-			Name:    "status",
-			Aliases: []string{"s"},
-			Usage:   "get current status of SNOO",
-			Action:  Status,
-		},
 		{
 			Name:   "sessions",
 			Usage:  "print list of sessions for a date range",

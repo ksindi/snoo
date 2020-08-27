@@ -49,7 +49,6 @@ VERSION:
    0.1.0
 
 COMMANDS:
-   status, s  get current status of SNOO
    sessions   print list of sessions for a date range
    days       print list of daily aggregated sessions for a date range
    help, h    Shows a list of commands or help for one command
@@ -60,18 +59,6 @@ GLOBAL OPTIONS:
    --help, -h        show help (default: false)
    --version, -v     print the version (default: false)
 ```
-
-### Get status
-
-To get the status of your SNOO, simply run
-
-```sh
-$ snoo status
-Soothing 26m
-```
-
-The output of the `snoo status` command is the status
-(`Awake`, `Asleep`, or `Soothing`), and the duration of the current session.
 
 ### Export daily aggregated data
 

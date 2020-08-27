@@ -213,21 +213,6 @@ func (c *Client) Token(ctx context.Context) string {
 	return c.tokenSession.AccessToken
 }
 
-// GetStatus returns current status of SNOO
-func (c *Client) GetStatus() map[string]interface{} {
-	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel()
-
-	var result map[string]interface{}
-
-	err := c.MakeRequestWithToken(ctx, http.MethodGet, CurrentPath, nil, nil, &result)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return result
-}
-
 // GetHistory returns the session history of the SNOO
 func (c *Client) GetHistory(startTime, endTime time.Time) {
 	ctx, cancel := context.WithCancel(context.Background())

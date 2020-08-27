@@ -101,6 +101,8 @@ func runCli() error {
 			log.SetLevel(log.DebugLevel)
 		}
 
+		log.Debugf("Username: '%s'", c.String("username"))
+
 		return nil
 	}
 

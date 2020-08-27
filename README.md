@@ -56,6 +56,7 @@ COMMANDS:
 GLOBAL OPTIONS:
    --username value  SNOO login username [$SNOO_USERNAME]
    --password value  SNOO login password [$SNOO_PASSWORD]
+   --debug           Enable verbose debugging (default: false)
    --help, -h        show help (default: false)
    --version, -v     print the version (default: false)
 ```

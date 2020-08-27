@@ -90,6 +90,18 @@ func runCli() error {
 			EnvVars:  []string{"SNOO_PASSWORD"},
 			Required: true,
 		},
+		&cli.BoolFlag{
+			Name:  "debug",
+			Usage: "Enable verbose debugging",
+		},
+	}
+
+	app.Before = func(c *cli.Context) error {
+		if c.Bool("debug") {
+			log.SetLevel(log.DebugLevel)
+		}
+
+		return nil
 	}
 
 	app.EnableBashCompletion = true
@@ -100,9 +112,6 @@ func runCli() error {
 }
 
 func main() {
-	// setup logging
-	log.SetLevel(log.InfoLevel)
-
 	// run the cli
 	err := runCli()
 
